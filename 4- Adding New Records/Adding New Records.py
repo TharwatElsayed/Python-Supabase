@@ -1,0 +1,36 @@
+from supabase import create_client, Client
+
+# Supabase project credentials
+url = "https://lnkqupiklbgvdmfnyjlj.supabase.co"
+key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxua3F1cGlrbGJndmRtZm55amxqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEzMjg3NzgsImV4cCI6MjA3NjkwNDc3OH0.GJq4fQFmql3pRL9nbHTcjk5JppxsvuDvF-Sli2aO-A4"
+
+try:
+    # Initialize Supabase client
+    supabase: Client = create_client(url, key)
+    print("✅ Connected to Supabase successfully!")
+
+    # --- Step 1: Get user input ---
+    name = input("Enter user name: ")
+    age_input = input("Enter age: ")
+
+    # Convert to float safely
+    try:
+        age = float(age_input)
+    except ValueError:
+        print("❌ Invalid age value. Please enter a number.")
+        exit()
+
+    # --- Step 2: Insert new record ---
+    response = supabase.table("Users").insert(
+        {"name": name, "age": age}
+    ).execute()
+
+    # --- Step 3: Check response ---
+    if response.data:
+        print("✅ Record added successfully!")
+        print("Inserted data:", response.data)
+    else:
+        print("⚠️ No data returned. Check RLS or permissions in Supabase.")
+
+except Exception as e:
+    print("❌ Error while inserting record:", e)
