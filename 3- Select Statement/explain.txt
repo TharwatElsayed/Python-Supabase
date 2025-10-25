@@ -1,0 +1,27 @@
+3- Select Statement
+
+✅ Fix — Allow access temporarily for testing
+
+You can fix this directly from your Supabase Dashboard:
+
+Go to your project
+👉 https://lnkqupiklbgvdmfnyjlj.supabase.co/project/default/editor
+
+Navigate to:
+
+Database → Tables → Users → Policies
+
+
+Click “Enable Row Level Security” (if not already enabled).
+
+Then add a new policy:
+
+Policy name: Allow all for testing
+
+Command: All
+
+Using expression: true
+
+Check expression: true
+
+✅ This will allow inserts, selects, updates, and deletes for anyone holding your API key (safe for local testing only).
