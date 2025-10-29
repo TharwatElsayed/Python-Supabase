@@ -2,8 +2,8 @@ from supabase import create_client, Client
 import os
 
 # --- Supabase project credentials ---
-url = "https://lnkqupiklbgvdmfnyjlj.supabase.co"
-key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxua3F1cGlrbGJndmRtZm55amxqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MTMyODc3OCwiZXhwIjoyMDc2OTA0Nzc4fQ.QSzKG0kQywl4wnub1xu8-xpNpMm8kVlwhL8gqagk6p4"
+url = ""
+key = ""
 
 try:
     # Initialize Supabase client
@@ -41,3 +41,4 @@ try:
 
 except Exception as e:
     print("❌ Error while uploading file:", e)
+
